@@ -1,253 +1,1608 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+/* ==========================================
+   FOR YOU ❤️
+   STYLE.CSS — PART 1
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: black;
-    color: white;
-    overflow: hidden;
-}
+:root{
 
+    --bg:#09060d;
+    --card:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.15);
 
-.screen {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-
-.screen.active {
-    display: flex;
-    opacity: 1;
-}
-
-
-/* Screen 1 Terminal */
-
-.terminal {
-    width: 500px;
-    max-width: 90%;
-    padding: 30px;
-    background: #050505;
-    border: 1px solid #333;
-    box-shadow: 0 0 30px rgba(255,255,255,0.1);
-    text-align: left;
-}
-
-
-.terminal h1 {
-    color: #00ff88;
-    margin-bottom: 20px;
-}
-
-
-.terminal-text p {
-    margin: 12px 0;
-    color: #ccc;
-    font-family: monospace;
-}
-
-
-button {
-    margin-top: 25px;
-    padding: 12px 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 30px;
-    background: white;
-    color: black;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-
-button:hover {
-    transform: scale(1.05);
-}
-
-
-/* Screen 2 */
-
-.story-text p {
-    font-size: 24px;
-    margin: 20px;
-}
-
-
-.doors {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-
-.door {
-    width: 170px;
-    height: 220px;
-    background: #111;
-    color: white;
-    border: 2px solid #555;
-    border-radius: 10px;
-    font-size: 18px;
-}
-
-
-.love:hover {
-    box-shadow: 0 0 40px pink;
-}
-
-
-.destiny:hover {
-    box-shadow: 0 0 40px gold;
-}
-
-
-.miracle:hover {
-    box-shadow: 0 0 40px cyan;
-}
-
-
-small {
-    display: block;
-    margin-top: 30px;
-    color: #aaa;
-}
-
-
-
-/* Screen 3 */
-
-.heart {
-    font-size: 80px;
-    animation: heartbeat 1.5s infinite;
-}
-
-
-@keyframes heartbeat {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    --pink:#ff5ca8;
+    --pink2:#ff9fd0;
+    --white:#ffffff;
+    --text:#f4eaf2;
 
 }
 
+html{
 
-.reveal p {
-    margin: 10px;
+    scroll-behavior:smooth;
+
 }
 
+body{
 
-.message {
-    margin-top: 30px;
-    line-height: 2;
-}
+    font-family:
+    "Poppins",
+    sans-serif;
 
+    background:var(--bg);
 
-.reveal h2 {
-    margin-top: 40px;
-}
+    color:var(--text);
 
+    overflow:hidden;
 
+    user-select:none;
 
-/* Screen 4 */
-
-#screen4 input {
-
-    display:block;
-    margin:20px auto;
-    padding:15px;
-    width:300px;
-
-    background:black;
-    color:white;
-
-    border:1px solid white;
-    border-radius:10px;
+    touch-action:manipulation;
 
 }
 
 
 
-/* Screen 5 */
+/* ==========================================
+   APP
+========================================== */
 
-.fingerprint {
+#app{
 
-    width:220px;
-    height:220px;
+    width:100%;
 
-    border:3px solid cyan;
-    border-radius:50%;
+    height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+/* ==========================================
+   STARRY BACKGROUND
+========================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at top,#522046 0%,#1b0f22 35%,#09060d 100%);
+
+    z-index:-5;
+
+}
+
+
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+    radial-gradient(white 1px,transparent 1px);
+
+    background-size:70px 70px;
+
+    opacity:.25;
+
+    animation:
+
+    twinkle 6s linear infinite;
+
+    z-index:-4;
+
+}
+
+
+
+/* ==========================================
+   SCREENS
+========================================== */
+
+.screen{
+
+    position:absolute;
+
+    inset:0;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
+    padding:30px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+
+    scale(.98);
+
+    transition:
+
+    opacity .8s,
+
+    transform .8s,
+
+    visibility .8s;
+
+}
+
+.screen.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+
+    scale(1);
+
+}
+
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.content,
+
+.terminal-card{
+
+    width:min(92%,650px);
+
+    background:var(--card);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:
+
+    0 20px 60px rgba(0,0,0,.4),
+
+    0 0 40px rgba(255,92,168,.15);
+
+}
+
+
+
+/* ==========================================
+   TEXT
+========================================== */
+
+h1{
+
+    font-size:48px;
+
+    font-weight:700;
+
+}
+
+h2{
+
+    font-size:36px;
+
+    margin-bottom:18px;
+
+}
+
+h3{
+
+    font-size:24px;
+
+    margin-bottom:16px;
+
+}
+
+p{
+
+    line-height:1.8;
+
+    margin:12px 0;
+
+    color:#f7dfe8;
+
+}
+
+small{
+
+    color:#ffb6d7;
+
+}
+
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    padding:15px 36px;
+
+    border-radius:999px;
+
+    margin-top:24px;
+
+    font-size:17px;
+
+    color:white;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    var(--pink),
+    var(--pink2)
+    );
+
+    transition:.35s;
+
+    box-shadow:
+
+    0 10px 30px rgba(255,92,168,.35);
+
+}
+
+button:hover{
+
+    transform:
+
+    translateY(-4px);
+
+    box-shadow:
+
+    0 20px 45px rgba(255,92,168,.45);
+
+}
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+
+
+/* ==========================================
+   INPUT
+========================================== */
+
+input{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:17px;
+
+}
+
+input::placeholder{
+
+    color:#ffd8ea;
+
+}
+
+
+
+/* ==========================================
+   BIG HEART
+========================================== */
+
+.heart-big{
+
+    font-size:90px;
+
+    margin:25px 0;
+
+    animation:
+
+    heartbeat 1.5s infinite;
+
+}
+
+
+
+/* ==========================================
+   DOORS
+========================================== */
+
+.doors{
+
+    display:flex;
+
+    gap:20px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    margin:40px 0;
+
+}
+
+.door{
+
+    width:160px;
+
+    height:210px;
+
+    border-radius:20px;
+
+    background:
+
+    rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+.door:hover{
+
+    transform:
+
+    translateY(-10px);
+
+}
+
+
+
+/* ==========================================
+   HEART PARTICLES
+========================================== */
+
+.heart-particle{
+
+    position:fixed;
+
+    font-size:20px;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    animation:
+
+    heartFloat linear forwards;
+
+}
+
+
+
+/* ==========================================
+   PETALS
+========================================== */
+
+.petal{
+
+    position:fixed;
+
+    width:12px;
+
+    height:12px;
+
+    background:#ffb4d7;
+
+    border-radius:60% 40% 60% 40%;
+
+    transform:rotate(45deg);
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    animation:
+
+    petalFall linear forwards;
+
+}
+
+
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes heartbeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.15);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        opacity:.18;
+
+    }
+
+    50%{
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        opacity:.18;
+
+    }
+
+}
+
+@keyframes heartFloat{
+
+    from{
+
+        transform:
+        translateY(110vh)
+        rotate(0);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translateY(-20vh)
+        translateX(60px)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+@keyframes petalFall{
+
+    from{
+
+        transform:
+        translateY(-20vh)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translateY(120vh)
+        translateX(120px)
+        rotate(720deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:34px;
+
+    }
+
+    h2{
+
+        font-size:28px;
+
+    }
+
+    h3{
+
+        font-size:20px;
+
+    }
+
+    p{
+
+        font-size:15px;
+
+    }
+
+    .content,
+    .terminal-card{
+
+        padding:28px;
+
+    }
+
+    .door{
+
+        width:130px;
+
+        height:170px;
+
+    }
+
+    .heart-big{
+
+        font-size:72px;
+
+    }
+
+}
+/* ==========================================
+   SCREEN 1 - TERMINAL
+========================================== */
+
+#screen1 .terminal-card{
+
+    text-align:left;
+
+}
+
+#screen1 h2{
+
+    color:#7CFFB2;
+
+    font-family:monospace;
+
+}
+
+.terminal-lines{
+
+    margin:30px 0;
+
+}
+
+.terminal-lines p{
+
+    font-family:monospace;
+
+    color:#d9d9d9;
+
+    margin:14px 0;
+
+    opacity:0;
+
+    animation:terminalTyping .8s forwards;
+
+}
+
+.terminal-lines p:nth-child(1){animation-delay:.3s;}
+.terminal-lines p:nth-child(2){animation-delay:1s;}
+.terminal-lines p:nth-child(3){animation-delay:1.7s;}
+.terminal-lines p:nth-child(4){animation-delay:2.4s;}
+
+
+
+/* ==========================================
+   SCREEN 2
+========================================== */
+
+#screen2{
+
+    text-align:center;
+
+}
+
+#screen2 h2{
+
+    margin-bottom:20px;
+
+}
+
+#screen2 small{
+
+    display:block;
+
+    margin-top:25px;
+
+}
+
+.door{
+
+    transition:
+    transform .35s,
+    box-shadow .35s,
+    border-color .35s;
+
+}
+
+.door:nth-child(1):hover{
+
+    border-color:#ff77c7;
+
+    box-shadow:
+    0 0 30px #ff77c7,
+    inset 0 0 25px rgba(255,119,199,.35);
+
+}
+
+.door:nth-child(2):hover{
+
+    border-color:#ffd54d;
+
+    box-shadow:
+    0 0 30px #ffd54d,
+    inset 0 0 25px rgba(255,213,77,.3);
+
+}
+
+.door:nth-child(3):hover{
+
+    border-color:#78f7ff;
+
+    box-shadow:
+    0 0 30px #78f7ff,
+    inset 0 0 25px rgba(120,247,255,.3);
+
+}
+
+
+
+/* ==========================================
+   SCREEN 3
+========================================== */
+
+.story{
+
+    margin:35px 0;
+
+}
+
+.story p{
+
+    opacity:0;
+
+    animation:fadeSentence 1.2s forwards;
+
+}
+
+.story p:nth-child(1){animation-delay:1s;}
+.story p:nth-child(2){animation-delay:3s;}
+.story p:nth-child(3){animation-delay:5s;}
+.story p:nth-child(4){animation-delay:7s;}
+
+.typing{
+
+    margin-top:20px;
+
+}
+
+.typing p{
+
+    margin:10px 0;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 4
+========================================== */
+
+#screen4 input{
+
+    margin-bottom:10px;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 5
+========================================== */
+
+.fingerprint-area{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin:35px 0;
+
+}
+
+#fingerprint{
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    border:3px solid #4efcff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:
+
+    0 0 25px rgba(78,252,255,.5);
+
+}
+
+#fingerprint span{
+
+    font-size:70px;
+
+}
+
+#fingerprint::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    width:100%;
+
+    height:4px;
+
+    background:#5ffcff;
+
+    box-shadow:0 0 15px cyan;
+
+    animation:scanner 2s linear infinite;
+
+}
+
+#scanPercent{
+
+    color:#79ffff;
+
+    margin-top:25px;
+
+}
+
+#identityMessage{
+
+    margin-top:20px;
+
+    color:#ffc7e3;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 6
+========================================== */
+
+.answer-buttons{
+
+    width:320px;
+
+    height:140px;
+
+    margin:40px auto;
+
+    position:relative;
+
+}
+
+#yesButton,
+#noButton{
+
+    width:120px;
+
+    position:absolute;
+
+}
+
+#yesButton{
+
+    left:10px;
+
+    top:45px;
+
+}
+
+#noButton{
+
+    right:10px;
+
+    top:45px;
+
+}
+
+#niceTry{
+
+    color:#ffd0e7;
+
+    min-height:30px;
+
+}
+
+#loveAnswer{
+
+    display:none;
+
+    margin-top:30px;
+
+}
+
+#loveAnswer p{
+
+    margin:18px 0;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 7
+========================================== */
+
+#emptyLifeMessage{
+
+    display:none;
+
+    margin-top:40px;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 8
+========================================== */
+
+#vault{
+
+    width:240px;
+
+    height:240px;
 
     margin:30px auto;
 
-    box-shadow:
-    0 0 20px cyan;
+    border-radius:50%;
+
+    border:6px solid #bfbfbf;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#2b2b2b;
+
+    overflow:hidden;
+
+}
+
+.vault-door{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:70px;
+
+    transition:1s;
+
+}
+
+#vaultContent{
+
+    display:none;
+
+    margin-top:30px;
 
 }
 
 
-.scan-text {
 
-    font-size:14px;
-    color:#aaa;
+/* ==========================================
+   SCREEN 9
+========================================== */
+
+#heartbeatWords p{
+
+    opacity:0;
+
+    font-size:34px;
+
+    margin:25px 0;
+
+}
+
+#heartbeatWords p:nth-child(1){
+
+    animation:fadeSentence 1s forwards;
+    animation-delay:1s;
+
+}
+
+#heartbeatWords p:nth-child(2){
+
+    animation:fadeSentence 1s forwards;
+    animation-delay:3s;
+
+}
+
+#heartbeatWords p:nth-child(3){
+
+    animation:fadeSentence 1s forwards;
+    animation-delay:5s;
 
 }
 
 
-#scanStatus {
 
-    color:cyan;
+/* ==========================================
+   SCREEN 10
+========================================== */
+
+#breakingHeart{
+
+    font-size:120px;
+
+    animation:heartbeat 1.4s infinite;
+
+}
+
+#heartMessage{
+
+    display:none;
+
+    margin-top:30px;
+
 }
 
 
-#identityResult {
 
-    margin-top:20px;
-    color:#ff7ce5;
+/* ==========================================
+   EXTRA ANIMATIONS
+========================================== */
 
-}
+@keyframes terminalTyping{
 
+    from{
 
+        opacity:0;
+        transform:translateX(-20px);
 
-/* Mobile */
-
-@media(max-width:600px){
-
-    .doors{
-        flex-direction:column;
     }
 
+    to{
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes fadeSentence{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes scanner{
+
+    0%{
+
+        top:-5px;
+
+    }
+
+    100%{
+
+        top:100%;
+
+    }
+
+}
+/* ==========================================
+   SCREEN 11
+========================================== */
+
+#deleteResult{
+
+    display:none;
+
+    margin-top:35px;
+
+    animation:fadeSentence .8s forwards;
+
+}
+
+#deleteResult p{
+
+    margin:15px 0;
+
+}
+
+#deleteMemory{
+
+    background:
+    linear-gradient(135deg,#ff4d6d,#ff758f);
+
+}
+
+#keepMemory{
+
+    background:
+    linear-gradient(135deg,#6d5dfc,#9d8cff);
+
+}
+
+
+
+/* ==========================================
+   SCREEN 12
+========================================== */
+
+.progress-container{
+
+    width:100%;
+
+    max-width:420px;
+
+    height:18px;
+
+    margin:35px auto;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
+
+#loveProgress,
+.progress-complete,
+#chapterProgress{
+
+    width:0%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ff6bb5,
+    #ffd1ea
+    );
+
+    border-radius:50px;
+
+    box-shadow:
+    0 0 20px rgba(255,100,180,.5);
+
+}
+
+.progress-complete{
+
+    width:100%;
+
+}
+
+#progressText{
+
+    font-size:24px;
+
+    font-weight:600;
+
+    margin-top:15px;
+
+}
+
+#infinityMessage{
+
+    display:none;
+
+    animation:fadeSentence 1s forwards;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 13
+========================================== */
+
+#screen13 h2{
+
+    animation:fadeSentence 1.5s forwards;
+
+}
+
+#screen13 h3{
+
+    opacity:0;
+
+    animation:fadeSentence 1.5s forwards;
+
+    animation-delay:2s;
+
+}
+
+
+
+/* ==========================================
+   FINAL SCREEN
+========================================== */
+
+.final-content{
+
+    max-width:760px;
+
+}
+
+#constellationHeart{
+
+    font-size:90px;
+
+    margin-bottom:35px;
+
+    animation:
+
+    heartbeat 1.8s infinite,
+    glowHeart 3s infinite;
+
+}
+
+#cursor{
+
+    display:inline-block;
+
+    font-size:34px;
+
+    margin:25px 0;
+
+    animation:blink .8s infinite;
+
+}
+
+.game-finish{
+
+    margin-top:50px;
+
+}
+
+.game-finish h1{
+
+    margin-bottom:20px;
+
+}
+
+.game-finish h2{
+
+    color:#ffd5ea;
+
+}
+
+
+
+/* ==========================================
+   SCREEN 15
+========================================== */
+
+#screen15{
+
+    text-align:center;
+
+}
+
+#screen15 h1{
+
+    margin-top:45px;
+
+    color:#ffd5ea;
+
+    animation:glowHeart 3s infinite;
+
+}
+
+#screen15 h2{
+
+    margin-top:25px;
+
+}
+
+#screen15 p{
+
+    margin:14px 0;
+
+}
+
+
+
+/* ==========================================
+   STAR LAYER
+========================================== */
+
+.stars{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-3;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+
+    height:2px;
+
+    border-radius:50%;
+
+    background:white;
+
+    animation:twinkleStar 3s infinite;
+
+}
+
+
+
+/* ==========================================
+   SHOOTING STAR
+========================================== */
+
+.shooting-star{
+
+    position:fixed;
+
+    width:180px;
+
+    height:2px;
+
+    background:
+    linear-gradient(
+    90deg,
+    white,
+    transparent
+    );
+
+    transform:rotate(-30deg);
+
+    animation:shootStar 4s linear forwards;
+
+    pointer-events:none;
+
+}
+
+
+
+/* ==========================================
+   GLASS GLOW
+========================================== */
+
+.content:hover{
+
+    box-shadow:
+
+    0 20px 60px rgba(0,0,0,.4),
+
+    0 0 60px rgba(255,100,180,.25);
+
+}
+
+
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#ff87bf;
+
+    border-radius:20px;
+
+}
+
+
+
+/* ==========================================
+   EXTRA ANIMATIONS
+========================================== */
+
+@keyframes glowHeart{
+
+    0%{
+
+        filter:
+        drop-shadow(0 0 10px #ff73bc);
+
+    }
+
+    50%{
+
+        filter:
+        drop-shadow(0 0 35px #ff73bc);
+
+    }
+
+    100%{
+
+        filter:
+        drop-shadow(0 0 10px #ff73bc);
+
+    }
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
+
+@keyframes twinkleStar{
+
+    0%{
+
+        opacity:.2;
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:1;
+        transform:scale(1.8);
+
+    }
+
+    100%{
+
+        opacity:.2;
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes shootStar{
+
+    from{
+
+        transform:
+        translate(120vw,-20vh)
+        rotate(-30deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translate(-40vw,80vh)
+        rotate(-30deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ==========================================
+   PHONE
+========================================== */
+
+@media (max-width:600px){
+
+    .content,
+    .terminal-card{
+
+        width:94%;
+
+        padding:24px;
+
+        border-radius:22px;
+
+    }
+
+    h1{
+
+        font-size:30px;
+
+    }
+
+    h2{
+
+        font-size:24px;
+
+    }
+
+    h3{
+
+        font-size:18px;
+
+    }
+
+    p{
+
+        font-size:15px;
+
+    }
 
     .door{
-        width:220px;
-        height:100px;
+
+        width:120px;
+
+        height:160px;
+
+        font-size:16px;
+
     }
 
+    .heart-big{
 
-    .story-text p{
-        font-size:18px;
+        font-size:65px;
+
+    }
+
+    #fingerprint{
+
+        width:180px;
+
+        height:180px;
+
+    }
+
+    .answer-buttons{
+
+        width:280px;
+
+    }
+
+    #yesButton,
+    #noButton{
+
+        width:105px;
+
     }
 
 }
