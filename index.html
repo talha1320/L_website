@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Screen 1 -->
+    <section class="screen active" id="screen1">
+        <div class="terminal">
+            <h1>Accessing...</h1>
+
+            <div class="terminal-text">
+                <p>> Initializing...</p>
+                <p>> Loading memories...</p>
+                <p>> Encrypting emotions...</p>
+                <p>> Access Denied.</p>
+            </div>
+
+            <button id="requestAccess">
+                Request Access
+            </button>
+        </div>
+    </section>
+
+
+    <!-- Screen 2 -->
+    <section class="screen" id="screen2">
+
+        <div class="story-text">
+            <p>Every journey begins with a single choice.</p>
+
+            <p>Which path will you take?</p>
+        </div>
+
+        <div class="doors">
+
+            <button class="door love">
+                🚪 Love ❤️
+            </button>
+
+            <button class="door destiny">
+                🚪 Destiny ✨
+            </button>
+
+            <button class="door miracle">
+                🚪 Miracle 🌌
+            </button>
+
+        </div>
+
+        <small>
+            Choose with your heart.
+        </small>
+
+    </section>
+
+
+    <!-- Screen 3 -->
+    <section class="screen" id="screen3">
+
+        <div class="reveal">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+            <p>Processing...</p>
+
+            <p>Love ✓</p>
+            <p>Destiny ✓</p>
+            <p>Miracle ✓</p>
+
+            <div class="message">
+                <p>Love brought us together.</p>
+                <p>Destiny kept us together.</p>
+                <p>And every day with you...</p>
+                <p>...still feels like a miracle.</p>
+            </div>
+
+            <h2>
+                No matter which door you opened...
+                <br>
+                ...you were always my destination. ❤️
+            </h2>
+
+            <button class="continue">
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Screen 4 -->
+    <section class="screen" id="screen4">
+
+        <h1>Welcome.</h1>
+
+        <p>
+            Before we continue,
+            <br>
+            I need to know who you are.
+        </p>
+
+
+        <input type="text" id="nameInput" placeholder="Enter your name...">
+
+        <button id="nameContinue">
+            Continue →
+        </button>
+
+    </section>
+
+
+    <!-- Screen 5 -->
+    <section class="screen" id="screen5">
+
+        <h1>
+            Identity Verification Required
+        </h1>
+
+
+        <div class="fingerprint">
+
+            <!-- SVG fingerprint will be added here -->
+
+            <div class="scan-text">
+                Press and hold your fingerprint
+                <br>
+                for 3 seconds.
+            </div>
+
+        </div>
+
+
+        <p id="scanStatus">
+            Scanning...
+        </p>
+
+
+        <p id="identityResult"></p>
+
+
+        <button class="continue" id="identityContinue">
+            Continue →
+        </button>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

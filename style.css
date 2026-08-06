@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: black;
+    color: white;
+    overflow: hidden;
+}
+
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+
+.screen.active {
+    display: flex;
+    opacity: 1;
+}
+
+
+/* Screen 1 Terminal */
+
+.terminal {
+    width: 500px;
+    max-width: 90%;
+    padding: 30px;
+    background: #050505;
+    border: 1px solid #333;
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    text-align: left;
+}
+
+
+.terminal h1 {
+    color: #00ff88;
+    margin-bottom: 20px;
+}
+
+
+.terminal-text p {
+    margin: 12px 0;
+    color: #ccc;
+    font-family: monospace;
+}
+
+
+button {
+    margin-top: 25px;
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    background: white;
+    color: black;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+
+button:hover {
+    transform: scale(1.05);
+}
+
+
+/* Screen 2 */
+
+.story-text p {
+    font-size: 24px;
+    margin: 20px;
+}
+
+
+.doors {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.door {
+    width: 170px;
+    height: 220px;
+    background: #111;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+
+.love:hover {
+    box-shadow: 0 0 40px pink;
+}
+
+
+.destiny:hover {
+    box-shadow: 0 0 40px gold;
+}
+
+
+.miracle:hover {
+    box-shadow: 0 0 40px cyan;
+}
+
+
+small {
+    display: block;
+    margin-top: 30px;
+    color: #aaa;
+}
+
+
+
+/* Screen 3 */
+
+.heart {
+    font-size: 80px;
+    animation: heartbeat 1.5s infinite;
+}
+
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+.reveal p {
+    margin: 10px;
+}
+
+
+.message {
+    margin-top: 30px;
+    line-height: 2;
+}
+
+
+.reveal h2 {
+    margin-top: 40px;
+}
+
+
+
+/* Screen 4 */
+
+#screen4 input {
+
+    display:block;
+    margin:20px auto;
+    padding:15px;
+    width:300px;
+
+    background:black;
+    color:white;
+
+    border:1px solid white;
+    border-radius:10px;
+
+}
+
+
+
+/* Screen 5 */
+
+.fingerprint {
+
+    width:220px;
+    height:220px;
+
+    border:3px solid cyan;
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:30px auto;
+
+    box-shadow:
+    0 0 20px cyan;
+
+}
+
+
+.scan-text {
+
+    font-size:14px;
+    color:#aaa;
+
+}
+
+
+#scanStatus {
+
+    color:cyan;
+}
+
+
+#identityResult {
+
+    margin-top:20px;
+    color:#ff7ce5;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .doors{
+        flex-direction:column;
+    }
+
+
+    .door{
+        width:220px;
+        height:100px;
+    }
+
+
+    .story-text p{
+        font-size:18px;
+    }
+
+}
