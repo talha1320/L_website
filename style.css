@@ -117,37 +117,29 @@ body::after{
 /* ==========================================
    SCREENS
 ========================================== */
-
 .screen{
-
-    position:absolute;
-
+    position:fixed;
     inset:0;
 
-    display:flex;
-
+    display:none;
     justify-content:center;
-
     align-items:center;
+    flex-direction:column;
 
-    padding:30px;
+    width:100%;
+    height:100vh;
+
+    padding:24px;
+
+    overflow:hidden;
 
     opacity:0;
+    transition:opacity .8s ease;
+}
 
-    visibility:hidden;
-
-    transform:
-
-    scale(.98);
-
-    transition:
-
-    opacity .8s,
-
-    transform .8s,
-
-    visibility .8s;
-
+.screen.active{
+    display:flex;
+    opacity:1;
 }
 
 .screen.active{
@@ -662,68 +654,92 @@ input::placeholder{
 
 
 /* ==========================================
-   SCREEN 2
+   SCREEN 2 — DOOR COLORS
 ========================================== */
 
-#screen2{
+/* ❤️ LOVE — PINK */
+#screen2 .doors .door:nth-child(1) {
+    color: #ff8fc4 !important;
 
-    text-align:center;
+    border-color: rgba(255, 92, 168, 0.65) !important;
 
-}
-
-#screen2 h2{
-
-    margin-bottom:20px;
-
-}
-
-#screen2 small{
-
-    display:block;
-
-    margin-top:25px;
-
-}
-
-.door{
-
-    transition:
-    transform .35s,
-    box-shadow .35s,
-    border-color .35s;
-
-}
-
-.door:nth-child(1):hover{
-
-    border-color:#ff77c7;
+    background: rgba(255, 92, 168, 0.10) !important;
 
     box-shadow:
-    0 0 30px #ff77c7,
-    inset 0 0 25px rgba(255,119,199,.35);
-
+        0 0 18px rgba(255, 92, 168, 0.20),
+        inset 0 0 15px rgba(255, 92, 168, 0.08);
 }
 
-.door:nth-child(2):hover{
 
-    border-color:#ffd54d;
+/* ✨ DESTINY — GOLD */
+#screen2 .doors .door:nth-child(2) {
+    color: #ffd84d !important;
+
+    border-color: rgba(255, 216, 77, 0.75) !important;
+
+    background: rgba(255, 200, 40, 0.10) !important;
 
     box-shadow:
-    0 0 30px #ffd54d,
-    inset 0 0 25px rgba(255,213,77,.3);
-
+        0 0 20px rgba(255, 210, 60, 0.25),
+        inset 0 0 15px rgba(255, 210, 60, 0.08);
 }
 
-.door:nth-child(3):hover{
 
-    border-color:#78f7ff;
+/* 🌌 MIRACLE — BLUE */
+#screen2 .doors .door:nth-child(3) {
+    color: #69b7ff !important;
+
+    border-color: rgba(70, 160, 255, 0.75) !important;
+
+    background: rgba(40, 130, 255, 0.10) !important;
 
     box-shadow:
-    0 0 30px #78f7ff,
-    inset 0 0 25px rgba(120,247,255,.3);
-
+        0 0 20px rgba(60, 150, 255, 0.25),
+        inset 0 0 15px rgba(60, 150, 255, 0.08);
 }
 
+
+/* ==========================================
+   HOVER / TOUCH
+========================================== */
+
+#screen2 .doors .door:nth-child(1):hover {
+    color: #ffb6d9 !important;
+
+    border-color: #ff77c7 !important;
+
+    box-shadow:
+        0 0 30px #ff77c7,
+        inset 0 0 25px rgba(255,119,199,.35);
+
+    transform: translateY(-6px);
+}
+
+
+#screen2 .doors .door:nth-child(2):hover {
+    color: #ffe98a !important;
+
+    border-color: #ffd54d !important;
+
+    box-shadow:
+        0 0 30px #ffd54d,
+        inset 0 0 25px rgba(255,213,77,.35);
+
+    transform: translateY(-6px);
+}
+
+
+#screen2 .doors .door:nth-child(3):hover {
+    color: #a5d7ff !important;
+
+    border-color: #4da6ff !important;
+
+    box-shadow:
+        0 0 30px #4da6ff,
+        inset 0 0 25px rgba(77,166,255,.35);
+
+    transform: translateY(-6px);
+}
 
 
 /* ==========================================
@@ -861,66 +877,284 @@ input::placeholder{
 
 
 
-/* ==========================================
+/* =========================
    SCREEN 6
+========================= */
+
+#screen6 {
+
+    background:
+    radial-gradient(
+        circle,
+        #4a1638,
+        black 80%
+    );
+
+    padding: 20px;
+
+}
+
+
+.memory-question {
+
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.memory-question h1 {
+
+    color: #ffd1e5;
+
+    text-shadow:
+        0 0 20px pink;
+
+    font-size: clamp(20px, 5vw, 32px);
+
+    line-height: 1.4;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* YES / NO */
+
+/* ==========================================
+   ANSWER BUTTONS
 ========================================== */
 
-.answer-buttons{
+.answer-buttons {
+    margin: 20px auto 0;
+}
 
-    width:320px;
 
-    height:140px;
+/* ==========================================
+   SCREEN 6 — YES / NO
+========================================== */
 
-    margin:40px auto;
+#screen6 .answer-buttons {
+    position: relative;
 
-    position:relative;
+    width: 320px;
+    height: 100px;
+
+    margin: 15px auto 0;
+}
+
+#screen6 #yesButton,
+#screen6 #noButton {
+    width: 120px;
+    height: 50px;
+
+    border-radius: 30px;
+
+    margin-top: 0;
+}
+
+
+/* YES */
+
+#screen6 #yesButton {
+    position: absolute;
+
+    left: 20px;
+    top: 25px;
+}
+
+
+/* NO */
+
+#screen6 #noButton {
+    position: absolute;
+
+    right: 20px;
+    top: 25px;
+}
+
+
+/* ==========================================
+   SCREEN 11 — MEMORY BUTTONS
+========================================== */
+
+#screen11 .answer-buttons {
+    width: 100%;
+    max-width: 360px;
+
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px auto 0;
+}
+
+#screen11 .answer-buttons button {
+    position: static;
+
+    width: auto;
+    min-width: 140px;
+
+    margin: 0;
+
+    padding: 13px 20px;
+
+    white-space: nowrap;
+}
+
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+    #screen11 .answer-buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    #screen11 .answer-buttons button {
+        width: min(220px, 90%);
+
+        min-width: 0;
+
+        padding: 12px 18px;
+
+        font-size: 15px;
+    }
 
 }
+
 
 #yesButton,
-#noButton{
+#noButton {
 
-    width:120px;
+    width: 120px;
+    height: 50px;
 
-    position:absolute;
-
-}
-
-#yesButton{
-
-    left:10px;
-
-    top:45px;
+    border-radius: 30px;
 
 }
 
-#noButton{
 
-    right:10px;
+#yesButton {
 
-    top:45px;
+    position: absolute;
 
-}
-
-#niceTry{
-
-    color:#ffd0e7;
-
-    min-height:30px;
+    left: 20px;
+    top: 25px;
 
 }
 
-#loveAnswer{
 
-    display:none;
+#noButton {
 
-    margin-top:30px;
+    position: absolute;
+
+    right: 20px;
+    top: 25px;
 
 }
 
-#loveAnswer p{
 
-    margin:18px 0;
+/* Nice try */
+
+#niceTry {
+
+    margin-top: 10px;
+
+    color: #ffb6d9;
+
+}
+
+
+/* Love answer */
+
+#loveAnswer {
+
+    display: none;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    line-height: 1.7;
+
+    color: #ffe6f0;
+
+    text-align: center;
+
+}
+
+
+#loveAnswer p {
+
+    margin: 15px 0;
+
+}
+
+
+/* Continue */
+
+#loveAnswer .continue {
+
+    margin-top: 15px;
+
+}
+
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+    .answer-buttons {
+
+        width: 280px;
+        height: 90px;
+
+    }
+
+
+    #yesButton,
+    #noButton {
+
+        width: 110px;
+        height: 46px;
+
+    }
+
+
+    #yesButton {
+
+        left: 10px;
+        top: 20px;
+
+    }
+
+
+    #noButton {
+
+        right: 10px;
+        top: 20px;
+
+    }
+
+
+    #loveAnswer {
+
+        font-size: 15px;
+
+    }
 
 }
 
@@ -1241,94 +1475,174 @@ input::placeholder{
 
 
 
-/* ==========================================
-   FINAL SCREEN
-========================================== */
+/* =========================
+   SCREEN 14 — TYPEWRITER
+========================= */
 
-.final-content{
+#screen14 {
+    background: radial-gradient(
+        circle at center,
+        #2b1930,
+        #100a14 75%
+    );
 
-    max-width:760px;
-
+    padding: 20px;
 }
 
-#constellationHeart{
+#screen14 .final-content {
+    width: 90%;
+    max-width: 650px;
 
-    font-size:90px;
+    min-height: auto;
 
-    margin-bottom:35px;
+    padding: 35px 25px;
 
-    animation:
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    heartbeat 1.8s infinite,
-    glowHeart 3s infinite;
+    background: rgba(255, 255, 255, 0.06);
 
-}
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
-#cursor{
+    border-radius: 22px;
 
-    display:inline-block;
+    backdrop-filter: blur(12px);
 
-    font-size:34px;
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
 
-    margin:25px 0;
-
-    animation:blink .8s infinite;
-
-}
-
-.game-finish{
-
-    margin-top:50px;
-
-}
-
-.game-finish h1{
-
-    margin-bottom:20px;
-
-}
-
-.game-finish h2{
-
-    color:#ffd5ea;
-
+    transition: opacity 1.2s ease;
 }
 
 
+/* Typewriter text */
 
-/* ==========================================
-   SCREEN 15
-========================================== */
+#screen14 .typing-text {
 
-#screen15{
+    width: 100%;
 
-    text-align:center;
+    text-align: center;
 
-}
+    font-size: clamp(18px, 4vw, 28px);
 
-#screen15 h1{
+    line-height: 1.7;
 
-    margin-top:45px;
+    color: #fff;
 
-    color:#ffd5ea;
-
-    animation:glowHeart 3s infinite;
-
-}
-
-#screen15 h2{
-
-    margin-top:25px;
-
-}
-
-#screen15 p{
-
-    margin:14px 0;
+    white-space: pre-wrap;
 
 }
 
 
+/* Individual typed lines */
+
+#screen14 .typing-line {
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Cursor */
+
+#screen14 .cursor {
+
+    display: inline-block;
+
+    width: 2px;
+    height: 1.1em;
+
+    margin-left: 4px;
+
+    background: white;
+
+    vertical-align: -0.12em;
+
+    animation: cursorBlink 0.8s infinite;
+
+}
+
+
+@keyframes cursorBlink {
+
+    50% {
+        opacity: 0;
+    }
+
+}
+
+
+/* Continue */
+
+#screen14 .continue-final {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 13px 32px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: linear-gradient(
+        135deg,
+        #ff5ca8,
+        #ff8ac5
+    );
+
+    color: white;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255, 92, 168, 0.45);
+
+    transition: 0.3s ease;
+}
+
+
+#screen14 .continue-final:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+    #screen14 .final-content {
+
+        width: 88%;
+
+        padding: 28px 18px;
+
+        border-radius: 18px;
+
+    }
+
+    #screen14 .typing-text {
+
+        font-size: 17px;
+
+        line-height: 1.65;
+
+    }
+
+    #screen14 .typing-line {
+
+        margin-bottom: 16px;
+
+    }
+
+}
 
 /* ==========================================
    STAR LAYER
@@ -1370,159 +1684,174 @@ input::placeholder{
    SHOOTING STAR
 ========================================== */
 
-.shooting-star{
-
-    position:fixed;
-
-    width:180px;
-
-    height:2px;
-
-    background:
-    linear-gradient(
-    90deg,
-    white,
-    transparent
-    );
-
-    transform:rotate(-30deg);
-
-    animation:shootStar 4s linear forwards;
-
-    pointer-events:none;
-
-}
-
-
-
 /* ==========================================
-   GLASS GLOW
+   🌠 BRIGHT NATURAL SHOOTING STARS
 ========================================== */
 
-.content:hover{
+.shooting-star {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
 
     box-shadow:
+        0 0 6px #ffffff,
+        0 0 14px #ffffff,
+        0 0 28px rgba(255, 210, 245, 0.95);
 
-    0 20px 60px rgba(0,0,0,.4),
-
-    0 0 60px rgba(255,100,180,.25);
-
+    transform: rotate(var(--angle));
 }
 
+
+/* Long bright tail */
+
+.shooting-star::after {
+    content: "";
+
+    position: absolute;
+
+    width: var(--tail-length);
+    height: 3px;
+
+    right: 4px;
+    top: 2px;
+
+    transform-origin: right center;
+
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 1),
+        rgba(255, 220, 245, 0.7),
+        transparent
+    );
+
+    border-radius: 50%;
+
+    filter: blur(1px);
+}
 
 
 /* ==========================================
-   SCROLLBAR
+   TOP LEFT → BOTTOM RIGHT
 ========================================== */
 
-::-webkit-scrollbar{
-
-    width:8px;
-
+.shoot-tl-br {
+    animation: shootTLBR 1.15s ease-out forwards;
 }
 
-::-webkit-scrollbar-thumb{
+@keyframes shootTLBR {
 
-    background:#ff87bf;
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(35deg)
+            scale(0.4);
 
-    border-radius:20px;
+        opacity: 0;
+    }
 
+    8% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(420px, 300px)
+            rotate(35deg)
+            scale(1);
+
+        opacity: 0;
+    }
 }
-
 
 
 /* ==========================================
-   EXTRA ANIMATIONS
+   TOP RIGHT → BOTTOM LEFT
 ========================================== */
 
-@keyframes glowHeart{
-
-    0%{
-
-        filter:
-        drop-shadow(0 0 10px #ff73bc);
-
-    }
-
-    50%{
-
-        filter:
-        drop-shadow(0 0 35px #ff73bc);
-
-    }
-
-    100%{
-
-        filter:
-        drop-shadow(0 0 10px #ff73bc);
-
-    }
-
+.shoot-tr-bl {
+    animation: shootTRBL 1.15s ease-out forwards;
 }
 
-@keyframes blink{
+@keyframes shootTRBL {
 
-    50%{
-
-        opacity:0;
-
-    }
-
-}
-
-@keyframes twinkleStar{
-
-    0%{
-
-        opacity:.2;
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        opacity:1;
-        transform:scale(1.8);
-
-    }
-
-    100%{
-
-        opacity:.2;
-        transform:scale(1);
-
-    }
-
-}
-
-@keyframes shootStar{
-
-    from{
-
+    0% {
         transform:
-        translate(120vw,-20vh)
-        rotate(-30deg);
+            translate(0, 0)
+            rotate(145deg)
+            scale(0.4);
 
-        opacity:0;
-
+        opacity: 0;
     }
 
-    10%{
-
-        opacity:1;
-
+    8% {
+        opacity: 1;
     }
 
-    to{
+    75% {
+        opacity: 1;
+    }
 
+    100% {
         transform:
-        translate(-40vw,80vh)
-        rotate(-30deg);
+            translate(-420px, 300px)
+            rotate(145deg)
+            scale(1);
 
-        opacity:0;
+        opacity: 0;
+    }
+}
 
+
+/* ==========================================
+   LEFT → RIGHT DOWN
+========================================== */
+
+.shoot-left-right {
+    animation: shootLeftRight 1.2s ease-out forwards;
+}
+
+@keyframes shootLeftRight {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(15deg)
+            scale(0.4);
+
+        opacity: 0;
     }
 
+    8% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(480px, 130px)
+            rotate(15deg)
+            scale(1);
+
+        opacity: 0;
+    }
 }
 
 
@@ -1605,4 +1934,588 @@ input::placeholder{
 
     }
 
+}
+
+.blackout{
+
+    background:#000 !important;
+
+}
+
+.blackout::before,
+.blackout::after{
+
+    display:none !important;
+
+}
+
+.blackout .heart-particle,
+.blackout .petal,
+.blackout .shooting-star{
+
+    display:none !important;
+
+}
+#answerPart{
+    opacity:0;
+}
+.typing-text{
+
+    width:90%;
+    max-width:900px;
+
+    text-align:center;
+
+    font-size:clamp(20px,3vw,34px);
+
+    line-height:1.8;
+
+    white-space:pre-wrap;
+
+    color:white;
+
+}
+
+.cursor{
+
+    display:inline-block;
+
+    width:3px;
+
+    height:1.2em;
+
+    background:white;
+
+    margin-left:4px;
+
+    vertical-align:bottom;
+
+    animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================
+   FIXES / CLEANUP
+========================================== */
+
+/* Screen 7: true pitch-black transition */
+body.blackout {
+    background:#000 !important;
+}
+
+body.blackout::before,
+body.blackout::after {
+    display:none !important;
+}
+
+body.blackout .heart-particle,
+body.blackout .petal,
+body.blackout .shooting-star {
+    display:none !important;
+}
+
+#screen7.black-scene {
+    background:#000 !important;
+}
+
+#screen7.black-scene .content {
+    width:100%;
+    max-width:none;
+    min-height:100vh;
+    padding:24px;
+    background:#000;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+    backdrop-filter:none;
+}
+
+#screen7 #questionPart,
+#screen7 #answerPart {
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+#screen7 #answerPart {
+    position:absolute;
+    inset:0;
+    padding:30px;
+    opacity:0;
+    transition:opacity 2s ease;
+}
+
+#screen7 #answerPart h2 {
+    max-width:800px;
+}
+
+/* Final typewriter screen */
+#screen14 .content {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+#screen14 .typing-text {
+    width:100%;
+    max-width:850px;
+    min-height:110px;
+    text-align:center;
+    font-size:clamp(20px, 3vw, 34px);
+    line-height:1.8;
+    white-space:pre-wrap;
+    color:white;
+}
+
+#screen14 #continue14 {
+    margin-top:35px;
+}
+
+.cursor {
+    display:inline-block;
+    width:3px;
+    height:1.15em;
+    background:white;
+    margin-left:4px;
+    vertical-align:-0.15em;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink {
+    50% { opacity:0; }
+}
+
+@media (max-width:768px) {
+    #screen14 .content {
+        padding:24px;
+    }
+
+    #screen14 .typing-text {
+        font-size:clamp(18px, 5vw, 27px);
+        line-height:1.65;
+    }
+
+    #screen7.black-scene .content {
+        padding:20px;
+    }
+}
+/* ==========================================
+   ROMANTIC BACKGROUND PARTICLES
+========================================== */
+
+.background-effects {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* Make sure screens stay above particles */
+
+.screen {
+    z-index: 2;
+}
+
+
+/* ==========================================
+   🌠 SHOOTING STARS
+========================================== */
+
+.shooting-star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 12px rgba(255,255,255,0.9);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* Star trail */
+
+.shooting-star::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 2px;
+
+    right: 0;
+    top: 0;
+
+    transform-origin: right center;
+
+    background: linear-gradient(
+        to left,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0.8)
+    );
+
+    filter: blur(1px);
+
+}
+
+
+/* Different shooting directions */
+
+.shooting-star.diagonal-right {
+
+    animation:
+        shootRight 1.2s linear forwards;
+
+}
+
+
+.shooting-star.diagonal-left {
+
+    animation:
+        shootLeft 1.2s linear forwards;
+
+}
+
+
+.shooting-star.down-right {
+
+    animation:
+        shootDownRight 1.3s linear forwards;
+
+}
+
+
+@keyframes shootRight {
+
+    0% {
+
+        transform:
+            translate(0, 0)
+            rotate(-25deg)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(320px, 180px)
+            rotate(-25deg)
+            scale(1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+@keyframes shootLeft {
+
+    0% {
+
+        transform:
+            translate(0, 0)
+            rotate(25deg)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(-320px, 180px)
+            rotate(25deg)
+            scale(1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+@keyframes shootDownRight {
+
+    0% {
+
+        transform:
+            translate(0, 0)
+            rotate(-45deg)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(250px, 250px)
+            rotate(-45deg)
+            scale(1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ==========================================
+   🌸 FALLING FLOWERS
+========================================== */
+
+.falling-flower {
+
+    position: absolute;
+
+    top: -50px;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,130,190,0.45));
+
+    animation:
+        flowerFall linear forwards;
+
+}
+
+
+@keyframes flowerFall {
+
+    0% {
+
+        transform:
+            translate3d(0, -60px, 0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+
+    10% {
+
+        opacity: 0.9;
+
+    }
+
+
+    30% {
+
+        transform:
+            translate3d(25px, 30vh, 0)
+            rotate(100deg);
+
+    }
+
+
+    55% {
+
+        transform:
+            translate3d(-35px, 60vh, 0)
+            rotate(210deg);
+
+    }
+
+
+    80% {
+
+        transform:
+            translate3d(30px, 85vh, 0)
+            rotate(300deg);
+
+    }
+
+
+    100% {
+
+        transform:
+            translate3d(-20px, 115vh, 0)
+            rotate(420deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ==========================================
+   ❤️ RISING HEARTS
+========================================== */
+
+.rising-heart {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(0 0 7px rgba(255,80,150,0.65));
+
+    animation:
+        heartRise linear forwards;
+
+}
+
+
+@keyframes heartRise {
+
+    0% {
+
+        transform:
+            translate3d(0, 0, 0)
+            rotate(0deg)
+            scale(0.8);
+
+        opacity: 0;
+
+    }
+
+
+    10% {
+
+        opacity: 0.85;
+
+    }
+
+
+    30% {
+
+        transform:
+            translate3d(35px, -25vh, 0)
+            rotate(12deg)
+            scale(1);
+
+    }
+
+
+    55% {
+
+        transform:
+            translate3d(-30px, -55vh, 0)
+            rotate(-12deg)
+            scale(0.95);
+
+    }
+
+
+    75% {
+
+        transform:
+            translate3d(40px, -80vh, 0)
+            rotate(10deg)
+            scale(1.05);
+
+    }
+
+
+    100% {
+
+        transform:
+            translate3d(-20px, -120vh, 0)
+            rotate(-8deg)
+            scale(0.7);
+
+        opacity: 0;
+
+    }
+
+}
+/* ==========================================
+   SCREEN 2 — DOOR COLORS
+========================================== */
+
+/* Love ❤️ */
+#screen2 .door.love {
+    border-color: rgba(255, 92, 168, 0.55);
+    color: #ff8fc4;
+    box-shadow: 0 0 18px rgba(255, 92, 168, 0.18);
+}
+
+/* Destiny ✨ — GOLD */
+#screen2 .door.destiny {
+    border-color: rgba(255, 210, 70, 0.65);
+    color: #ffd84d;
+    background: rgba(255, 190, 40, 0.08);
+    box-shadow: 0 0 20px rgba(255, 200, 50, 0.2);
+}
+
+/* Miracle 🌌 — BLUE */
+#screen2 .door.miracle {
+    border-color: rgba(70, 160, 255, 0.65);
+    color: #69b7ff;
+    background: rgba(40, 130, 255, 0.08);
+    box-shadow: 0 0 20px rgba(60, 150, 255, 0.2);
+}
+
+
+/* Hover / touch feedback */
+
+#screen2 .door.destiny:hover {
+    background: rgba(255, 200, 50, 0.18);
+    box-shadow: 0 0 30px rgba(255, 200, 50, 0.4);
+    transform: translateY(-3px);
+}
+
+#screen2 .door.miracle:hover {
+    background: rgba(50, 140, 255, 0.18);
+    box-shadow: 0 0 30px rgba(50, 140, 255, 0.4);
+    transform: translateY(-3px);
 }
