@@ -3472,3 +3472,10 @@ INFINITY — GREEN
 .screen.active {
     display: flex !important;
 }
+
+.typing-line {
+    font-family: "Patrick Hand", cursive;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
