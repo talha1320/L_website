@@ -60,13 +60,151 @@ if (requestAccess) {
 
 
 /* ==========================================
-   SCREEN 2
+SCREEN 2 — HOLD CHOICE FOR 1 SECOND
 ========================================== */
 
-document.querySelectorAll(".door").forEach(door => {
-    door.addEventListener("click", () => {
-        showScreen(3);
-    });
+const doors = document.querySelectorAll(".door");
+
+let selectedDoor = null;
+let holdTimer = null;
+
+const HOLD_TIME = 1000; // 1 second
+
+
+doors.forEach(door => {
+
+    /* ======================================
+       START HOLD
+    ====================================== */
+
+    function startHold(event) {
+
+        event.preventDefault();
+
+        if (holdTimer) {
+            clearTimeout(holdTimer);
+        }
+
+        selectedDoor = door;
+
+        /* Start gradual glow */
+        door.classList.add("holding");
+
+        door.style.setProperty(
+            "--hold-progress",
+            "0%"
+        );
+
+        /* Gradually fill over 1 second */
+        requestAnimationFrame(() => {
+
+            door.style.setProperty(
+                "--hold-progress",
+                "100%"
+            );
+
+        });
+
+
+        /* ONLY this timer is allowed
+           to move to Screen 3 */
+
+        holdTimer = setTimeout(() => {
+
+            if (selectedDoor !== door) return;
+
+            door.classList.remove("holding");
+
+            door.classList.add("selected");
+
+            /* Make sure glow is completely filled */
+
+            door.style.setProperty(
+                "--hold-progress",
+                "100%"
+            );
+
+            /* Go to next screen */
+
+            setTimeout(() => {
+                showScreen(3);
+            }, 150);
+
+            selectedDoor = null;
+            holdTimer = null;
+
+        }, HOLD_TIME);
+    }
+
+
+    /* ======================================
+       RELEASE / CANCEL
+    ====================================== */
+
+    function releaseHold() {
+
+        /* If timer already completed,
+           don't cancel anything */
+
+        if (!selectedDoor) return;
+
+        clearTimeout(holdTimer);
+
+        holdTimer = null;
+
+        /* Reset glow */
+
+        door.style.setProperty(
+            "--hold-progress",
+            "0%"
+        );
+
+        door.classList.remove("holding");
+
+        selectedDoor = null;
+    }
+
+
+    /* ======================================
+       DESKTOP
+    ====================================== */
+
+    door.addEventListener(
+        "mousedown",
+        startHold
+    );
+
+    door.addEventListener(
+        "mouseup",
+        releaseHold
+    );
+
+    door.addEventListener(
+        "mouseleave",
+        releaseHold
+    );
+
+
+    /* ======================================
+       PHONE
+    ====================================== */
+
+    door.addEventListener(
+        "touchstart",
+        startHold,
+        { passive: false }
+    );
+
+    door.addEventListener(
+        "touchend",
+        releaseHold
+    );
+
+    door.addEventListener(
+        "touchcancel",
+        releaseHold
+    );
+
 });
 
 

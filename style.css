@@ -2519,3 +2519,914 @@ body.blackout .shooting-star {
     box-shadow: 0 0 30px rgba(50, 140, 255, 0.4);
     transform: translateY(-3px);
 }
+
+/* ==========================================
+   SCREEN 2 — CHOICE CARDS
+========================================== */
+
+#screen2 .doors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+#screen2 .door {
+    position: relative;
+    overflow: hidden;
+
+    width: 105px;
+    height: 105px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Keep text above the glow */
+
+#screen2 .door > span {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Door icon */
+
+#screen2 .door-icon {
+    font-size: 24px;
+}
+
+
+/* ==========================================
+   GLOW FILL
+========================================== */
+
+#screen2 .hold-progress {
+    position: absolute;
+
+    z-index: 1;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 0%;
+
+    transition: none;
+
+    opacity: 0.9;
+}
+
+
+/* ==========================================
+   LOVE — PINK
+========================================== */
+
+#screen2 .love-door .hold-progress {
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 45, 130, 0.85),
+            rgba(255, 45, 130, 0.25)
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 45, 130, 0.8),
+        0 0 60px rgba(255, 45, 130, 0.5);
+}
+
+
+/* ==========================================
+   DESTINY — GOLD
+========================================== */
+
+#screen2 .destiny-door .hold-progress {
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 200, 50, 0.85),
+            rgba(255, 200, 50, 0.25)
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 200, 50, 0.8),
+        0 0 60px rgba(255, 200, 50, 0.5);
+}
+
+
+/* ==========================================
+   MIRACLE — BLUE
+========================================== */
+
+#screen2 .miracle-door .hold-progress {
+    background:
+        linear-gradient(
+            to top,
+            rgba(80, 150, 255, 0.85),
+            rgba(80, 150, 255, 0.25)
+        );
+
+    box-shadow:
+        0 0 30px rgba(80, 150, 255, 0.8),
+        0 0 60px rgba(80, 150, 255, 0.5);
+}
+
+
+/* ==========================================
+   HOLDING
+========================================== */
+
+#screen2 .door.holding {
+    transform: scale(1.05);
+}
+
+
+/* Love glow */
+
+#screen2 .love-door.holding {
+    border-color: rgba(255, 45, 130, 0.9);
+
+    box-shadow:
+        0 0 15px rgba(255, 45, 130, 0.8),
+        0 0 35px rgba(255, 45, 130, 0.5);
+}
+
+
+/* Destiny glow */
+
+#screen2 .destiny-door.holding {
+    border-color: rgba(255, 200, 50, 0.9);
+
+    box-shadow:
+        0 0 15px rgba(255, 200, 50, 0.8),
+        0 0 35px rgba(255, 200, 50, 0.5);
+}
+
+
+/* Miracle glow */
+
+#screen2 .miracle-door.holding {
+    border-color: rgba(80, 150, 255, 0.9);
+
+    box-shadow:
+        0 0 15px rgba(80, 150, 255, 0.8),
+        0 0 35px rgba(80, 150, 255, 0.5);
+}
+
+
+/* ==========================================
+   INSTRUCTIONS
+========================================== */
+
+#screen2 .choice-instruction {
+    display: block;
+
+    margin-top: 24px;
+
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    letter-spacing: 0.3px;
+}
+
+
+#screen2 .choice-note {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* ==========================================
+   PHONE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #screen2 .doors {
+        gap: 12px;
+    }
+
+    #screen2 .door {
+        width: 92px;
+        height: 92px;
+    }
+
+    #screen2 .door-icon {
+        font-size: 21px;
+    }
+
+    #screen2 .choice-instruction {
+        font-size: 11px;
+    }
+
+}
+/* ==========================================
+   SCREEN 2 — CHOICE CARDS
+========================================== */
+
+#screen2 .content {
+    width: min(90%, 500px);
+}
+
+/* Cards container */
+
+#screen2 .doors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+
+/* ==========================================
+   CHOICE CARD
+========================================== */
+
+#screen2 .door {
+
+    --door-color: #ff4f91;
+    --fill: 0%;
+
+    position: relative;
+
+    width: 105px;
+    height: 125px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            to top,
+            var(--door-color) var(--fill),
+            rgba(255,255,255,0.07) var(--fill)
+        );
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transform: translateY(0);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.08s linear;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    touch-action: none;
+}
+
+
+/* ==========================================
+   COLORS
+========================================== */
+
+#screen2 .love-door {
+    --door-color: #ff4f91;
+}
+
+#screen2 .destiny-door {
+    --door-color: #ffc83d;
+}
+
+#screen2 .miracle-door {
+    --door-color: #4c9cff;
+}
+
+
+/* ==========================================
+   CARD CONTENT
+========================================== */
+
+#screen2 .door-icon {
+
+    font-size: 28px;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+
+}
+
+
+#screen2 .door-name {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* ==========================================
+   HOLDING EFFECT
+========================================== */
+
+#screen2 .door.holding {
+
+    transform: translateY(-5px) scale(1.04);
+
+    border-color: var(--door-color);
+
+    box-shadow:
+        0 0 10px var(--door-color),
+        0 0 25px var(--door-color),
+        0 0 45px var(--door-color);
+
+}
+
+
+/* Icon glows while holding */
+
+#screen2 .door.holding .door-icon {
+
+    transform: scale(1.12);
+
+    filter:
+        drop-shadow(0 0 6px var(--door-color))
+        drop-shadow(0 0 12px var(--door-color));
+
+}
+
+
+/* ==========================================
+   COMPLETED
+========================================== */
+
+#screen2 .door.completed {
+
+    transform: scale(1.06);
+
+    border-color: var(--door-color);
+
+    box-shadow:
+        0 0 15px var(--door-color),
+        0 0 35px var(--door-color),
+        0 0 70px var(--door-color);
+
+}
+
+
+/* ==========================================
+   INSTRUCTION TEXT
+========================================== */
+
+#screen2 .hold-instruction {
+
+    margin-top: 28px;
+
+    font-size: 13px;
+
+    color: rgba(255,255,255,0.85);
+
+    animation: instructionPulse 2s ease-in-out infinite;
+
+}
+
+
+#screen2 .heart-note {
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    color: rgba(255,255,255,0.5);
+
+}
+
+
+@keyframes instructionPulse {
+
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* ==========================================
+   PHONE
+========================================== */
+
+@media (max-width: 600px) {
+
+    #screen2 .doors {
+
+        gap: 10px;
+
+        margin-top: 25px;
+
+    }
+
+
+    #screen2 .door {
+
+        width: 92px;
+
+        height: 112px;
+
+    }
+
+
+    #screen2 .door-icon {
+
+        font-size: 25px;
+
+    }
+
+
+    #screen2 .door-name {
+
+        font-size: 12px;
+
+    }
+
+
+    #screen2 .hold-instruction {
+
+        font-size: 12px;
+
+        margin-top: 24px;
+
+    }
+
+
+    #screen2 .heart-note {
+
+        font-size: 10px;
+
+    }
+
+}
+
+/* =====================================================
+   SCREEN 2 — HOLD TO CHOOSE
+===================================================== */
+
+#screen2 .doors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+#screen2 .door {
+    position: relative;
+
+    width: 105px;
+    height: 125px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+    /* Important for phones */
+    touch-action: none;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   CARD CONTENT STAYS ABOVE THE GLOW
+===================================================== */
+
+#screen2 .door > span:not(.hold-fill) {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* Door icon */
+#screen2 .door-icon {
+    font-size: 28px;
+}
+
+
+/* =====================================================
+   THE GRADUAL FILL
+===================================================== */
+
+#screen2 .hold-fill {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    /* Starts completely empty */
+    height: 0%;
+
+    z-index: 1;
+
+    transition: none;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   LOVE — PINK / RED
+===================================================== */
+
+#screen2 .love-door .hold-fill {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 55, 120, 0.75),
+            rgba(255, 55, 120, 0.18)
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 55, 120, 0.8),
+        inset 0 0 25px rgba(255, 55, 120, 0.45);
+}
+
+
+/* =====================================================
+   DESTINY — GOLD
+===================================================== */
+
+#screen2 .destiny-door .hold-fill {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 190, 40, 0.75),
+            rgba(255, 190, 40, 0.18)
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 190, 40, 0.8),
+        inset 0 0 25px rgba(255, 190, 40, 0.45);
+}
+
+
+/* =====================================================
+   MIRACLE — BLUE / PURPLE
+===================================================== */
+
+#screen2 .miracle-door .hold-fill {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(90, 130, 255, 0.8),
+            rgba(140, 80, 255, 0.18)
+        );
+
+    box-shadow:
+        0 0 25px rgba(90, 130, 255, 0.8),
+        inset 0 0 25px rgba(90, 130, 255, 0.45);
+}
+
+
+/* =====================================================
+   CARD GLOW WHILE HOLDING
+===================================================== */
+
+#screen2 .door.holding {
+    transform: scale(1.04);
+}
+
+
+/* Love */
+#screen2 .love-door.holding {
+    border-color: rgba(255, 70, 130, 0.9);
+
+    box-shadow:
+        0 0 12px rgba(255, 70, 130, 0.5),
+        0 0 35px rgba(255, 70, 130, 0.35);
+}
+
+
+/* Destiny */
+#screen2 .destiny-door.holding {
+    border-color: rgba(255, 200, 60, 0.9);
+
+    box-shadow:
+        0 0 12px rgba(255, 200, 60, 0.5),
+        0 0 35px rgba(255, 200, 60, 0.35);
+}
+
+
+/* Miracle */
+#screen2 .miracle-door.holding {
+    border-color: rgba(100, 140, 255, 0.9);
+
+    box-shadow:
+        0 0 12px rgba(100, 140, 255, 0.5),
+        0 0 35px rgba(100, 140, 255, 0.35);
+}
+
+
+/* =====================================================
+   INSTRUCTION TEXT
+===================================================== */
+
+.hold-instruction {
+
+    margin-top: 28px;
+
+    font-size: 13px;
+
+    opacity: 0.8;
+
+    letter-spacing: 0.3px;
+
+    animation: gentlePulse 2.5s ease-in-out infinite;
+}
+
+
+.heart-note {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    opacity: 0.55;
+
+    letter-spacing: 0.3px;
+}
+
+
+@keyframes gentlePulse {
+
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    #screen2 .doors {
+
+        gap: 10px;
+
+    }
+
+    #screen2 .door {
+
+        width: 92px;
+        height: 115px;
+
+    }
+
+    #screen2 .door-icon {
+
+        font-size: 24px;
+
+    }
+
+    .hold-instruction {
+
+        font-size: 12px;
+
+    }
+
+    .heart-note {
+
+        font-size: 10px;
+
+    }
+
+}
+/* ==========================================
+SCREEN 2 — CHOICE HOLD
+========================================== */
+
+.door {
+    position: relative;
+    overflow: hidden;
+
+    --hold-progress: 0%;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* ------------------------------------------
+   Gradual color filling
+------------------------------------------ */
+
+.door::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: var(--hold-progress);
+
+    opacity: 0.35;
+
+    z-index: 0;
+
+    transition:
+        height 1s linear;
+
+    pointer-events: none;
+}
+
+
+/* Keep text above glow */
+
+.door > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ------------------------------------------
+   LOVE — Pink
+------------------------------------------ */
+
+.love-door::before {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 50, 140, 0.95),
+            rgba(255, 50, 140, 0.15)
+        );
+
+}
+
+.love-door.holding {
+
+    box-shadow:
+        0 0 8px rgba(255, 50, 140, 0.4),
+        0 0 20px rgba(255, 50, 140, 0.35);
+
+}
+
+
+/* ------------------------------------------
+   DESTINY — Gold
+------------------------------------------ */
+
+.destiny-door::before {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(255, 200, 50, 0.95),
+            rgba(255, 200, 50, 0.15)
+        );
+
+}
+
+.destiny-door.holding {
+
+    box-shadow:
+        0 0 8px rgba(255, 200, 50, 0.4),
+        0 0 20px rgba(255, 200, 50, 0.35);
+
+}
+
+
+/* ------------------------------------------
+   MIRACLE — Blue
+------------------------------------------ */
+
+.miracle-door::before {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(60, 150, 255, 0.95),
+            rgba(60, 150, 255, 0.15)
+        );
+
+}
+
+.miracle-door.holding {
+
+    box-shadow:
+        0 0 8px rgba(60, 150, 255, 0.4),
+        0 0 20px rgba(60, 150, 255, 0.35);
+
+}
+
+
+/* ------------------------------------------
+   Completed selection
+------------------------------------------ */
+
+.door.selected {
+
+    transform: scale(1.05);
+
+}
