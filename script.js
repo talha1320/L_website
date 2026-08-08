@@ -1102,7 +1102,7 @@ async function playEnding() {
 
         "Every little detail...",
 
-        "...was made with you in in my mind.",
+        "...was made with you in my mind.",
 
         "If I could write\none more line of code...",
 
