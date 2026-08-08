@@ -8,6 +8,29 @@ const screens = document.querySelectorAll(".screen");
 let currentScreen = 1;
 let herName = "";
 
+// ==========================================
+// RESET WEBSITE ON EVERY PAGE LOAD
+// ==========================================
+
+window.addEventListener("load", () => {
+
+    currentScreen = 1;
+    herName = "";
+
+    screens.forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    const firstScreen = document.getElementById("screen1");
+
+    if (firstScreen) {
+        firstScreen.classList.add("active");
+    }
+
+    // Reset browser scroll position
+    window.scrollTo(0, 0);
+
+});
 
 /* ==========================================
    SCREEN SWITCH
@@ -250,16 +273,28 @@ const fingerprint = document.getElementById("fingerprint");
 const scanPercent = document.getElementById("scanPercent");
 const identityMessage = document.getElementById("identityMessage");
 const continue5 = document.getElementById("continue5");
+const scanInstruction = document.getElementById("scanInstruction");
 
 let holdInterval = null;
 let percent = 0;
 let scanComplete = false;
 
+
+/* ==========================================
+   CONTINUE BUTTON HIDDEN INITIALLY
+========================================== */
+
 if (continue5) {
     continue5.style.display = "none";
 }
 
+
+/* ==========================================
+   START FINGERPRINT SCAN
+========================================== */
+
 function startScan() {
+
     if (!fingerprint || !scanPercent) return;
 
     clearInterval(holdInterval);
@@ -267,64 +302,207 @@ function startScan() {
     if (scanComplete) return;
 
     percent = 0;
+
     scanPercent.textContent = "Scanning... 0%";
 
     holdInterval = setInterval(() => {
+
         percent += 5;
-        scanPercent.textContent = `Scanning... ${percent}%`;
+
+        scanPercent.textContent =
+            `Scanning... ${percent}%`;
+
+
+        /* ==================================
+           SCAN COMPLETE
+        ================================== */
 
         if (percent >= 100) {
+
             clearInterval(holdInterval);
+
             scanComplete = true;
 
-            scanPercent.textContent = "Fingerprint Accepted ✓";
+            percent = 100;
+
+
+            /* ==================================
+               FINGERPRINT SCANNER FADE OUT
+            ================================== */
+
+            fingerprint.style.transition =
+                "opacity 0.8s ease, transform 0.8s ease";
+
+            fingerprint.style.opacity = "0";
+
+            fingerprint.style.transform =
+                "scale(0.85)";
+
+
+            /* ==================================
+               HIDE SCAN INSTRUCTION
+            ================================== */
+
+            if (scanInstruction) {
+
+                scanInstruction.style.transition =
+                    "opacity 0.6s ease, transform 0.6s ease";
+
+                scanInstruction.style.opacity = "0";
+
+                scanInstruction.style.transform =
+                    "translateY(-8px)";
+
+                setTimeout(() => {
+
+                    scanInstruction.style.display =
+                        "none";
+
+                }, 600);
+            }
+
+
+            /* ==================================
+               HIDE SCANNER COMPLETELY
+            ================================== */
+
+            setTimeout(() => {
+
+                fingerprint.style.display = "none";
+
+            }, 800);
+
+
+            /* ==================================
+               ACCEPTED MESSAGE
+            ================================== */
+
+            scanPercent.textContent =
+                "Fingerprint Accepted ✓";
+
+
+            /* ==================================
+               IDENTITY MESSAGE
+            ================================== */
 
             if (identityMessage) {
+
                 identityMessage.innerHTML = `
                     <p>Identity Confirmed.</p>
+
                     <p>
                         Welcome,<br>
                         <strong>${escapeHtml(herName)}</strong>,
                         the girl who owns my heart. ❤️
                     </p>
                 `;
+
             }
 
+
+            /* ==================================
+               SHOW CONTINUE
+            ================================== */
+
             if (continue5) {
-                continue5.style.display = "inline-block";
+
+                continue5.style.display =
+                    "inline-block";
+
             }
+
         }
+
     }, 150);
 }
 
+
+/* ==========================================
+   STOP SCAN
+========================================== */
+
 function stopScan() {
+
     clearInterval(holdInterval);
 
     if (!scanComplete && scanPercent) {
+
         percent = 0;
-        scanPercent.textContent = "Press and hold again.";
+
+        scanPercent.textContent =
+            "Press and hold again.";
+
     }
+
 }
+
+
+/* ==========================================
+   DESKTOP
+========================================== */
 
 if (fingerprint) {
-    fingerprint.addEventListener("mousedown", startScan);
-    fingerprint.addEventListener("mouseup", stopScan);
-    fingerprint.addEventListener("mouseleave", stopScan);
 
-    fingerprint.addEventListener("touchstart", event => {
-        event.preventDefault();
-        startScan();
-    }, { passive: false });
+    fingerprint.addEventListener(
+        "mousedown",
+        startScan
+    );
 
-    fingerprint.addEventListener("touchend", stopScan);
+    fingerprint.addEventListener(
+        "mouseup",
+        stopScan
+    );
+
+    fingerprint.addEventListener(
+        "mouseleave",
+        stopScan
+    );
+
+
+    /* ======================================
+       PHONE
+    ====================================== */
+
+    fingerprint.addEventListener(
+        "touchstart",
+        event => {
+
+            event.preventDefault();
+
+            startScan();
+
+        },
+        { passive: false }
+    );
+
+
+    fingerprint.addEventListener(
+        "touchend",
+        stopScan
+    );
+
+
+    fingerprint.addEventListener(
+        "touchcancel",
+        stopScan
+    );
+
 }
+
+
+/* ==========================================
+   CONTINUE
+========================================== */
 
 if (continue5) {
-    continue5.addEventListener("click", () => {
-        showScreen(6);
-    });
-}
 
+    continue5.addEventListener("click", () => {
+
+        showScreen(6);
+
+    });
+
+}
 
 /* ==========================================
    SCREEN 6 - YES / NO
@@ -686,7 +864,7 @@ function startLoveCalculation() {
             clearInterval(loveTimer);
 
             infinityTimer = setTimeout(() => {
-                progressText.textContent = "∞";
+               progressText.innerHTML = '<span class="infinity-green">∞</span>';
                 infinityMessage.style.display = "block";
             }, 5000);
         }
@@ -932,7 +1110,7 @@ async function playEnding() {
 
         "Thank you...",
 
-        "...for becoming my favorite part of my life."
+        "...for becoming my favourite part of my life."
 
     ];
 

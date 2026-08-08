@@ -28,7 +28,7 @@
                     <p>> Initializing...</p>
                     <p>> Loading memories...</p>
                     <p>> Encrypting emotions...</p>
-                    <p>> Access Denied.</p>
+                    <p class="error-text">> Access Denied.</p>
 
                 </div>
 
@@ -197,7 +197,7 @@
 
                 </div>
 
-                <p>
+                <p id="scanInstruction">
                     Press and hold your fingerprint
                     <br>
                     for 3 seconds.
@@ -221,142 +221,170 @@
 
         </section>
 
-    </div>
-    <!-- ========================= -->
-    <!-- Screen 6 -->
-    <!-- ========================= -->
 
-    <section class="screen" id="screen6">
+        <!-- ========================= -->
+        <!-- Screen 6 -->
+        <!-- ========================= -->
 
-        <div class="content">
+        <section class="screen" id="screen6">
 
-            <h2>
-                Will you keep making memories with me? ❤️
-            </h2>
+            <div class="content">
 
-            <div class="answer-buttons">
+                <h2>
+                    Will you keep making memories with me? ❤️
+                </h2>
 
-                <button id="yesButton">
-                    Yes
-                </button>
+                <div class="answer-buttons">
 
-                <button id="noButton">
-                    No
-                </button>
+                    <button id="yesButton">
+                        Yes
+                    </button>
 
-            </div>
+                    <button id="noButton">
+                        No
+                    </button>
 
-            <p id="niceTry"></p>
+                </div>
 
-            <div id="loveAnswer">
+                <p id="niceTry"></p>
 
-                <p>
-                    I knew you would choose me, baby. 😏❤️
-                </p>
+                <div id="loveAnswer">
 
-                <p>
-                    But honestly...
-                </p>
+                    <p>
+                        I knew you would choose me, baby. 😏❤️
+                    </p>
 
-                <p>
-                    This was never a question.
-                </p>
+                    <p>
+                        But honestly...
+                    </p>
 
-                <p>
-                    Because every day,
-                    <br>
-                    you make me feel wanted,
-                    <br>
-                    loved, and incredibly lucky.
-                </p>
+                    <p>
+                        This was never a question.
+                    </p>
 
-                <p>
-                    And if I haven't said it enough—
-                </p>
+                    <p>
+                        Because every day,
+                        <br>
+                        you make me feel wanted,
+                        <br>
+                        loved, and incredibly lucky.
+                    </p>
 
-                <p>
-                    I love you so much, baby. ❤️
-                </p>
+                    <p>
+                        And if I haven't said it enough—
+                    </p>
 
-                <button id="continue6">
-                    Continue →
-                </button>
+                    <p>
+                        I love you so much, baby. ❤️
+                    </p>
 
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================= -->
-    <!-- Screen 7 -->
-    <!-- ========================= -->
-
-    <section class="screen" id="screen7">
-
-        <div class="content">
-
-            <div id="questionPart">
-
-                <h2>What if we had never met?</h2>
-
-                <button id="continue7">
-                    Continue
-                </button>
-
-            </div>
-
-            <div id="answerPart" style="display:none; opacity:0;">
-
-                <h2>That's exactly how empty my life would have been without you.</h2>
-
-                <button id="continue7b">
-                    Continue
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================= -->
-    <!-- Screen 8 -->
-    <!-- ========================= -->
-
-    <section class="screen" id="screen8">
-
-        <div class="content">
-
-            <h2>
-                Open the vault
-            </h2>
-
-            <div id="vault">
-
-                <div class="vault-door">
-
-                    🔒
+                    <button id="continue6">
+                        Continue →
+                    </button>
 
                 </div>
 
             </div>
 
-            <p>
+        </section>
 
-                Drag to open
 
-            </p>
 
-            <div id="vaultContent">
+        <!-- ========================= -->
+        <!-- Screen 7 -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen7">
+
+            <div class="content">
+
+                <div id="questionPart">
+
+                    <h2>What if we had never met?</h2>
+
+                    <button id="continue7">
+                        Continue
+                    </button>
+
+                </div>
+
+                <div id="answerPart" style="display:none; opacity:0;">
+
+                    <h2>That's exactly how empty my life would have been without you.</h2>
+
+                    <button id="continue7b">
+                        Continue
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- Screen 8 -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen8">
+
+            <div class="content">
+
+                <h2>
+                    Open the vault
+                </h2>
+
+                <div id="vault">
+
+                    <div class="vault-door">
+
+                        🔒
+
+                    </div>
+
+                </div>
 
                 <p>
-                    Searching...
+
+                    Drag to open
+
                 </p>
+
+                <div id="vaultContent">
+
+                    <p>
+                        Searching...
+                    </p>
+
+                    <div class="heart-big">
+
+                        ❤️
+
+                    </div>
+
+                </div>
+
+                <button id="continue8">
+
+                    Continue →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- Screen 9 -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen9">
+
+            <div class="content">
 
                 <div class="heart-big">
 
@@ -364,343 +392,317 @@
 
                 </div>
 
-            </div>
+                <div id="heartbeatWords">
 
-            <button id="continue8">
+                    <p>You</p>
 
-                Continue →
+                    <p>Changed</p>
 
-            </button>
+                    <p>Everything.</p>
 
-        </div>
+                </div>
 
-    </section>
+                <button id="continue9">
 
+                    Continue →
 
-
-    <!-- ========================= -->
-    <!-- Screen 9 -->
-    <!-- ========================= -->
-
-    <section class="screen" id="screen9">
-
-        <div class="content">
-
-            <div class="heart-big">
-
-                ❤️
-
-            </div>
-
-            <div id="heartbeatWords">
-
-                <p>You</p>
-
-                <p>Changed</p>
-
-                <p>Everything.</p>
-
-            </div>
-
-            <button id="continue9">
-
-                Continue →
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================= -->
-    <!-- Screen 10 -->
-    <!-- ========================= -->
-
-    <section class="screen" id="screen10">
-
-        <div class="content">
-
-            <div id="breakingHeart">
-
-                ❤️
-
-            </div>
-
-            <div id="heartMessage">
-
-                <p>
-
-                    Don't worry.
-
-                </p>
-
-                <p>
-
-                    You never broke my heart.
-
-                </p>
-
-                <p>
-
-                    You completed it.
-
-                </p>
-
-            </div>
-
-            <button id="continue10">
-
-                Continue →
-
-            </button>
-
-        </div>
-
-    </section>
-    <!-- ========================= -->
-    <!-- Screen 11 -->
-    <!-- ========================= -->
-
-    <section class="screen" id="screen11">
-
-        <div class="content">
-
-            <h2>
-                WARNING
-            </h2>
-
-            <h3>
-                Heart Storage Full.
-            </h3>
-
-            <p>
-                Reason:
-                <br>
-                Too many memories with you.
-            </p>
-
-            <div class="answer-buttons">
-
-                <button id="deleteMemory">
-                    Delete Memories
-                </button>
-
-                <button id="keepMemory">
-                    Keep Everything
                 </button>
 
             </div>
 
-            <div id="deleteResult">
-
-                <p>Error.</p>
-
-                <p>Request rejected!!!</p>
-
-                <p>
-                    My heart doesn't have a delete button for you.
-                </p>
-
-                <p>
-                    You're my favorite memory—I couldn't erase you even if I tried.
-                </p>
+        </section>
 
 
+
+        <!-- ========================= -->
+        <!-- Screen 10 -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen10">
+
+            <div class="content">
+
+                <div id="breakingHeart">
+
+                    ❤️
+
+                </div>
+
+                <div id="heartMessage">
+
+                    <p>
+
+                        Don't worry.
+
+                    </p>
+
+                    <p>
+
+                        You never broke my heart.
+
+                    </p>
+
+                    <p>
+
+                        You completed it.
+
+                    </p>
+
+                </div>
+
+                <button id="continue10">
+
+                    Continue →
+
+                </button>
 
             </div>
 
-        </div>
+        </section>
+        <!-- ========================= -->
+        <!-- Screen 11 -->
+        <!-- ========================= -->
 
-    </section>
+        <section class="screen" id="screen11">
 
-
-
-    <!-- ========================= -->
-    <!-- Screen 12 -->
-    <!-- ========================= -->
-
-    <section class="screen" id="screen12">
-
-        <div class="content">
-
-            <h2>
-                Calculating love...
-            </h2>
-
-            <div class="progress-container">
-
-                <div id="loveProgress"></div>
-
-            </div>
-
-            <p id="progressText">
-                0%
-            </p>
-
-            <div id="infinityMessage">
+            <div class="content">
 
                 <h2>
-                    Love value: ∞
+                    WARNING
                 </h2>
 
-                <p>
-                    Infinity detected.
-                </p>
+                <h3>
+                    Heart Storage Full.
+                </h3>
 
                 <p>
-                    My love for you is infinity…
+                    Reason:
+                    <br>
+                    Too many memories with you.
                 </p>
 
-                <button id="continue12">
+                <div class="answer-buttons">
+
+                    <button id="deleteMemory">
+                        Delete Memories
+                    </button>
+
+                    <button id="keepMemory">
+                        Keep Everything
+                    </button>
+
+                </div>
+
+                <div id="deleteResult">
+
+                    <h2 class="error-text">
+                        WARNING!
+                    </h2>
+
+                    <p>Request rejected!!!</p>
+
+                    <p>
+                        My heart doesn't have a delete button for you.
+                    </p>
+
+                    <p>
+                        You're my favorite memory—I couldn't erase you even if I tried.
+                    </p>
+
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- Screen 12 -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen12">
+
+            <div class="content">
+
+                <h2>
+                    Calculating love...
+                </h2>
+
+                <div class="progress-container">
+
+                    <div id="loveProgress"></div>
+
+                </div>
+
+                <p id="progressText">
+                    0%
+                </p>
+
+                <div id="infinityMessage">
+
+                    <h2>
+                        Love value: ∞
+                    </h2>
+
+                    <p>
+                        Infinity detected.
+                    </p>
+
+                    <p>
+                        My love for you is infinity…
+                    </p>
+
+                    <button id="continue12">
+                        Continue →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- Screen 13 -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen13">
+
+            <div class="content">
+
+                <h2>
+
+                    Out of 8 billion people...
+
+                </h2>
+
+                <h3>
+
+                    somehow my heart recognized yours.
+
+                </h3>
+
+                <button id="continue13">
+
+                    Continue →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- Final Screen -->
+        <!-- ========================= -->
+
+        <section class="screen" id="screen14">
+
+            <div class="content final-content">
+
+                <div id="endingText" class="typing-text"></div>
+
+                <button id="continue14" class="continue-final">
                     Continue →
                 </button>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
 
-    <!-- ========================= -->
-    <!-- Screen 13 -->
-    <!-- ========================= -->
+        <!-- ========================= -->
+        <!-- Chapter Forever -->
+        <!-- ========================= -->
 
-    <section class="screen" id="screen13">
+        <section class="screen" id="screen15">
 
-        <div class="content">
+            <div class="content">
 
-            <h2>
+                <h2>
 
-                Out of 8 billion people...
+                    Loading...
 
-            </h2>
+                </h2>
 
-            <h3>
+                <p>
 
-                somehow my heart recognized yours.
+                    Saving memories... ✓
 
-            </h3>
+                </p>
 
-            <button id="continue13">
+                <p>
 
-                Continue →
+                    Saving laughter... ✓
 
-            </button>
+                </p>
 
-        </div>
+                <p>
 
-    </section>
+                    Saving love... ✓
 
+                </p>
 
+                <p>
 
-    <!-- ========================= -->
-    <!-- Final Screen -->
-    <!-- ========================= -->
+                    Creating new adventures...
 
-    <section class="screen" id="screen14">
+                </p>
 
-        <div class="content final-content">
+                <div class="progress-container">
 
-            <div id="endingText" class="typing-text"></div>
+                    <div id="chapterProgress"></div>
 
-            <button id="continue14" class="continue-final">
-                Continue →
-            </button>
+                </div>
 
-        </div>
+                <h1>
 
-    </section>
+                    Chapter: Forever ❤️
 
+                </h1>
 
+                <p>
 
-    <!-- ========================= -->
-    <!-- Chapter Forever -->
-    <!-- ========================= -->
+                    No matter where life takes us...
 
-    <section class="screen" id="screen15">
+                </p>
 
-        <div class="content">
+                <p>
 
-            <h2>
+                    I hope we'll always find our way back to each other.
 
-                Loading...
+                </p>
 
-            </h2>
+                <h2>
 
-            <p>
+                    I love you.
 
-                Saving memories... ✓
+                </h2>
 
-            </p>
+                <h2>
 
-            <p>
+                    Always have.
 
-                Saving laughter... ✓
+                </h2>
 
-            </p>
+                <h2>
 
-            <p>
+                    Always will. ❤️
 
-                Saving love... ✓
-
-            </p>
-
-            <p>
-
-                Creating new adventures...
-
-            </p>
-
-            <div class="progress-container">
-
-                <div id="chapterProgress"></div>
+                </h2>
 
             </div>
 
-            <h1>
-
-                Chapter: Forever ❤️
-
-            </h1>
-
-            <p>
-
-                No matter where life takes us...
-
-            </p>
-
-            <p>
-
-                I hope we'll always find our way back to each other.
-
-            </p>
-
-            <h2>
-
-                I love you.
-
-            </h2>
-
-            <h2>
-
-                Always have.
-
-            </h2>
-
-            <h2>
-
-                Always will. ❤️
-
-            </h2>
-
-        </div>
-
-    </section>
-
+        </section>
+    </div>
     <script src="script.js"></script>
 
 </body>
